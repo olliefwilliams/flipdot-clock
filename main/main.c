@@ -103,8 +103,8 @@ void tick_task(void *pvParameter)
             ESP_LOGI(TAG, "Minutes counted: %s", minuteShow);
 
             fill_off(&dots);
-            render_text_4x5(&dots, 5, 1, myHours);
-            render_text_4x5(&dots, 5, 7, myMinutes);
+            render_text_3x5(&dots, 5, 1, myHours);
+            render_text_3x5(&dots, 5, 7, myMinutes);
             write_dotboard(&dots, false);
         }
 

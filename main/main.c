@@ -79,7 +79,7 @@ void tick_task(void *pvParameter)
     int flag = 0;
     while (1)
     {
-        //printf("Hello world!\n");
+        // printf("Hello world!\n");
         char custtime[64]; // no idea how long/big to make this; 64 is a guess
 
         char myHours[8];
@@ -103,8 +103,10 @@ void tick_task(void *pvParameter)
             ESP_LOGI(TAG, "Minutes counted: %s", minuteShow);
 
             fill_off(&dots);
-            render_text_3x5(&dots, 5, 1, myHours);
-            render_text_3x5(&dots, 5, 7, myMinutes);
+            render_text_3x5(&dots, 1, 5, myHours);
+            render_text_3x5(&dots, 11, 5, myMinutes);
+            dots[9][6] = 1; // colon top dot
+            dots[9][8] = 1; // colon bottom dot
             write_dotboard(&dots, false);
         }
 

@@ -107,7 +107,14 @@ void tick_task(void *pvParameter)
             render_text_3x5(&dots, 11, 5, myMinutes);
             dots[9][6] = 1; // colon top dot
             dots[9][8] = 1; // colon bottom dot
-            write_dotboard(&dots, false);
+            if (timeinfo.tm_min == 0)
+            {
+                write_dotboard(&dots, true); // once an hour, set a "keyframe" to fix any incorrect flips
+            }
+            else
+            {
+                write_dotboard(&dots, false);
+            }
         }
 
         ESP_LOGI(TAG, "Custom time in London is: %s", custtime);
